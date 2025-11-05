@@ -18,6 +18,12 @@ namespace SalesWebMcv.Controllers
             return View();
         }
 
+        public IActionResult About() {
+            ViewData["Message"] = "Sales wbe MVC App from C# Course";
+            ViewData["Aluno"] = "Thiago Melo";
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
