@@ -3,7 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using SalesWebMcv.Models;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SalesWebMcvContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWebMcvContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMcvContext' not found.")));
+    options.UseMySql(builder.Configuration.GetConnectionString("SalesWebMcvContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMcvContext' not found."), 
+    new MySqlServerVersion(new Version(8, 0, 36)), b =>  b.MigrationsAssembly("SalesWebMcv")
+    ));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
