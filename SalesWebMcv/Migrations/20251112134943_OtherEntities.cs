@@ -39,7 +39,7 @@ namespace SalesWebMcv.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "SalesRecords",
+                name: "SalesRecord",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -51,9 +51,9 @@ namespace SalesWebMcv.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SalesRecords", x => x.Id);
+                    table.PrimaryKey("PK_SalesRecord", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SalesRecords_Seller_SellerId",
+                        name: "FK_SalesRecord_Seller_SellerId",
                         column: x => x.SellerId,
                         principalTable: "Seller",
                         principalColumn: "Id",
@@ -62,8 +62,8 @@ namespace SalesWebMcv.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SalesRecords_SellerId",
-                table: "SalesRecords",
+                name: "IX_SalesRecord_SellerId",
+                table: "SalesRecord",
                 column: "SellerId");
 
             migrationBuilder.CreateIndex(
@@ -76,7 +76,7 @@ namespace SalesWebMcv.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SalesRecords");
+                name: "SalesRecord");
 
             migrationBuilder.DropTable(
                 name: "Seller");
