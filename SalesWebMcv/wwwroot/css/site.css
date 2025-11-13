@@ -29,14 +29,24 @@ body {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.navbar.bg-success .nav-link,
+.navbar.bg-success .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar.bg-success nav-link,
+.navbar.bg-success .navbar-brand:hover{
+    color: #e2e6ea !important;
+}
+
 .navbar-nav .nav-link {
-    color: #212529;
+    color: #ffffff;
     transition: color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #28a745  !important;
-    text-shadow: 0 0 2px rgba(40, 167, 69, 0.5);
+    color: #e2e6ea  !important;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
     background-color: transparent !important;
     box-shadow: none !important;
 }
