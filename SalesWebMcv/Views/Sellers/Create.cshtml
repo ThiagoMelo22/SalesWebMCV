@@ -26,13 +26,6 @@
                 <label asp-for="Seller.BaseSalary" class="form-label"></label>
                 <input asp-for="Seller.BaseSalary" class="form-control" />
             </div>
-            @* <div class="mb-3">
-                <label asp-for="Department" class="form-label"></label>
-                <select asp-for="DepartmentId" class="form-select" asp-items="ViewBag.DepartmentId">
-                    <option value="">-- Selecione um Departamento</option>
-                </select>
-                <span asp-validation-for="DepartmentId" class="text-danger"></span>
-            </div> *@
             <div class="mb-3">
                 <label asp-for="Seller.DepartmentId" class="form-label">Department</label>
                 <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" class="form-control">
