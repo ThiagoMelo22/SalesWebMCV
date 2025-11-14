@@ -1,4 +1,5 @@
 ﻿using SalesWebMcv.Models;
+using System.Collections.Generic;
 
 namespace SalesWebMcv.Services
 {
@@ -13,7 +14,7 @@ namespace SalesWebMcv.Services
 
         public List<Department> FindAll()
         {
-            return _context.Department.ToList();
+            return _context.Department.OrderBy(x => x.Name).ToList();
         }
     }
 }

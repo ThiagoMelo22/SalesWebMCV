@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SalesWebMcv.Models;
+using SalesWebMcv.Models.ViewModels;
 using SalesWebMcv.Services;
 
 namespace SalesWebMcv.Controllers
@@ -8,12 +9,12 @@ namespace SalesWebMcv.Controllers
     public class SellersController : Controller
     {
         private readonly SellerService _sellerService;
-        private readonly DepartmentService _department;
+        private readonly DepartmentService _departmentService;
 
         public SellersController(SellerService sellerService, DepartmentService department) 
         {
             _sellerService = sellerService;
-            _department = department;
+            _departmentService = department;
         }
 
         public IActionResult Index()
@@ -24,9 +25,9 @@ namespace SalesWebMcv.Controllers
 
         public IActionResult Create() 
         {
-            var departments = _department.FindAll();
-            ViewData["DepartmentId"] = new SelectList(departments, "Id", "Name");
-            return View();
+            var departments = _departmentService.FindAll();
+            var viewModel = new SellerFormViewModel { Departments = departments };
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -39,7 +40,7 @@ namespace SalesWebMcv.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            var departments = _department.FindAll();
+            var departments = _departmentService.FindAll();
             ViewData["DepartmentId"] = new SelectList(departments, "Id", "Name", seller.DepartmentId);
             return View(seller);
         }
