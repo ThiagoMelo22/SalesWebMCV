@@ -12,8 +12,8 @@ using SalesWebMcv.Models;
 namespace SalesWebMcv.Migrations
 {
     [DbContext(typeof(SalesWebMcvContext))]
-    [Migration("20251112134943_OtherEntities")]
-    partial class OtherEntities
+    [Migration("20251114130533_DepartmentForeignKey")]
+    partial class DepartmentForeignKey
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

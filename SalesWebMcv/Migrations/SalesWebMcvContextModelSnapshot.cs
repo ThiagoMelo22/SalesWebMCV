@@ -63,7 +63,7 @@ namespace SalesWebMcv.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("SalesRecords");
+                    b.ToTable("SalesRecord");
                 });
 
             modelBuilder.Entity("SalesWebMcv.Models.Seller", b =>
