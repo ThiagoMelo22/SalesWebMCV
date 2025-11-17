@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Localization;
 using SalesWebMcv.Data;
 using SalesWebMcv.Models;
 using SalesWebMcv.Services;
+using System.Globalization;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SalesWebMcvContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("SalesWebMcvContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMcvContext' not found."), 
@@ -19,6 +22,16 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+var enUs = new CultureInfo("en-US");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(enUs),
+    SupportedCultures = new List<CultureInfo> {enUs},
+    SupportedUICultures = new List<CultureInfo> {enUs}
+};
+
+app.UseRequestLocalization(localizationOptions);
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
