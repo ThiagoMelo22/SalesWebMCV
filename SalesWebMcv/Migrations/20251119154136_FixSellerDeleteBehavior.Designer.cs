@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesWebMcv.Models;
 
@@ -11,9 +12,11 @@ using SalesWebMcv.Models;
 namespace SalesWebMcv.Migrations
 {
     [DbContext(typeof(SalesWebMcvContext))]
-    partial class SalesWebMcvContextModelSnapshot : ModelSnapshot
+    [Migration("20251119154136_FixSellerDeleteBehavior")]
+    partial class FixSellerDeleteBehavior
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -15,6 +15,17 @@ namespace SalesWebMcv.Models
 
         public DbSet<Department> Department { get; set; } = default!;
         public DbSet<Seller> Seller { get; set; } = default!;
-        public DbSet<SalesRecord> SalesRecord { get; set; } = default!;    
+        public DbSet<SalesRecord> SalesRecord { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<SalesRecord>()
+                .HasOne(s => s.Seller)
+                .WithMany(v => v.Sales)
+                .HasForeignKey(f => f.SellerId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }
