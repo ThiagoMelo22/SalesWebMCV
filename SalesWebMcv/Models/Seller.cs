@@ -30,7 +30,7 @@ namespace SalesWebMcv.Models
 
         [Required(ErrorMessage = "The Department field is required.")]
         public int DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
         
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
